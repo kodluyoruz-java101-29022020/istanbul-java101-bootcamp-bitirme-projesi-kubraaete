@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kitap Ekle</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+        <div class="container my-5">
+            <h2 class="mb-5">Yeni Kitap</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="#" th:action="@{/pages/book}" th:object="${bookContext}" method="POST">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="col-form-label">Kitap Başlığı</label>
+                                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="İsim">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="printingYear" class="col-form-label">Basım Yılı</label>
+                                <input type="text" th:field="*{printingYear}" class="form-control" id="printingYear" placeholder="Basım Yılı">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="description" class="col-form-label">Açıklama</label>
+                                <input type="text" th:field="*{description}" class="form-control" id="gender" placeholder="Açıklama">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="note" class="col-form-label">Not</label>
+								<input type="text" th:field="*{note}" class="form-control" id="note" placeholder="Not" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="authors" class="col-form-label">Yazar</label>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" th:field="*{authors}">
+                                  <option selected>Seç</option>
+                                  <option th:each="author : ${authors}" th:value="${author.id}" th:text="#{${'selected.label.' + author.name}}"></option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">                                                            
+                             <input type="submit" class="btn btn-primary" value="Kaydet">
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
